@@ -1,0 +1,21 @@
+import matplotlib.pyplot as plt
+months = ['Jan', 'Feb', 'Mar', 'Apr', 'May']
+sales = [1000, 1500, 1200, 1800, 1600]
+plt.plot(months, sales, marker='o', color='blue')
+plt.title("Sales Over Month (Line)")
+plt.xlabel("Month")
+plt.ylabel("Sales")
+plt.grid(True)
+plt.show()
+plt.scatter(months, sales, color='green')
+plt.title("Sales Over Month (Scatter)")
+plt.xlabel("Month")
+plt.ylabel("Sales")
+plt.grid(True)
+plt.show()
+plt.bar(months, sales, color='purple')
+plt.title("Sales Over Month (Bar)")
+plt.xlabel("Month")
+plt.ylabel("Sales")
+plt.grid(axis='y')
+plt.show()

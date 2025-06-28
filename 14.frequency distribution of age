@@ -1,0 +1,16 @@
+import pandas as pd
+data = {'customer_id': [1, 2, 3, 4, 5],
+        'age': [25, 30, 25, 40, 30],
+        'purchase_amount': [100, 200, 150, 300, 250]}
+df = pd.DataFrame(data)
+age_freq = df['age'].value_counts().sort_index()
+print("Age Frequency Distribution:")
+print(age_freq)
+
+output:
+Age Frequency Distribution:
+age
+25    2
+30    2
+40    1
+Name: count, dtype: int64

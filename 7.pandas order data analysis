@@ -1,0 +1,29 @@
+import pandas as pd
+
+order_data = pd.DataFrame({
+    'customer_id': [1, 1, 2, 3, 2],
+    'order_date': pd.to_datetime(['2023-05-01', '2023-05-10', '2023-05-03', '2023-05-08', '2023-05-12']),
+    'product': ['A', 'B', 'A', 'C', 'B'],
+    'quantity': [2, 3, 1, 5, 2]
+})
+
+print("Total Orders Per Customer:\n", order_data['customer_id'].value_counts())
+print("Average Quantity per Product:\n", order_data.groupby('product')['quantity'].mean())
+print("Earliest Date:", order_data['order_date'].min())
+print("Latest Date:", order_data['order_date'].max())
+
+output:
+Total Orders Per Customer:
+ customer_id
+1    2
+2    2
+3    1
+Name: count, dtype: int64
+Average Quantity per Product:
+ product
+A    1.5
+B    2.5
+C    5.0
+Name: quantity, dtype: float64
+Earliest Date: 2023-05-01 00:00:00
+Latest Date: 2023-05-12 00:00:00

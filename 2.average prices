@@ -1,0 +1,26 @@
+import numpy as np
+sales_data = []
+print("Enter sales data for 3 products (each with 3 values):")
+
+for i in range(3):
+    row = input(f"Enter 3 values for product {i+1} (separated by spaces): ").split()
+    row = list(map(int, row)) 
+    sales_data.append(row)
+
+
+sales_array = np.array(sales_data)
+
+
+avg_price = sales_array.mean()
+
+
+print("Average Product Price:", avg_price)
+
+
+output:
+Enter sales data for 3 products (each with 3 values):
+Enter 3 values for product 1 (separated by spaces): 100 200 300
+Enter 3 values for product 2 (separated by spaces): 150 250 300
+Enter 3 values for product 3 (separated by spaces): 120 220 320
+Average Product Price: 217.77777777777777
+

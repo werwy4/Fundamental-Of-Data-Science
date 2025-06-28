@@ -1,0 +1,24 @@
+import string
+from collections import Counter
+text = "This is a sample text. This text is for testing word frequency!"
+text = text.lower()
+text = text.translate(str.maketrans('', '', string.punctuation))
+words = text.split()
+word_freq = Counter(words)
+print("Word Frequency Distribution:")
+for word, freq in word_freq.items():
+    print(f"{word}: {freq}")
+
+    output:
+    Word Frequency Distribution:
+this: 2
+is: 2
+a: 1
+sample: 1
+text: 2
+for: 1
+testing: 1
+word: 1
+frequency: 1
+
+

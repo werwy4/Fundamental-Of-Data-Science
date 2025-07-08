@@ -1,0 +1,41 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Create data directly
+data = {
+    'Name': ['A', 'B', 'C', 'D', 'E'],
+    'Age': [24, 30, 27, 22, 29],
+    'Position': ['FW', 'MF', 'FW', 'DF', 'MF'],
+    'Goals': [12, 8, 15, 1, 6],
+    'Salary': [100000, 120000, 150000, 80000, 110000]
+}
+df = pd.DataFrame(data)
+
+print("Top 5 goal scorers:\n", df.sort_values(by='Goals', ascending=False).head())
+print("\nTop 5 salaries:\n", df.sort_values(by='Salary', ascending=False).head())
+
+avg_age = df['Age'].mean()
+print("\nPlayers above average age:\n", df[df['Age'] > avg_age]['Name'].tolist())
+
+df['Position'].value_counts().plot(kind='bar', title='Players by Position')
+plt.show()
+
+output:
+Top 5 goal scorers:
+   Name  Age Position  Goals  Salary
+2    C   27       FW     15  150000
+0    A   24       FW     12  100000
+1    B   30       MF      8  120000
+4    E   29       MF      6  110000
+3    D   22       DF      1   80000
+
+Top 5 salaries:
+   Name  Age Position  Goals  Salary
+2    C   27       FW     15  150000
+1    B   30       MF      8  120000
+4    E   29       MF      6  110000
+0    A   24       FW     12  100000
+3    D   22       DF      1   80000
+
+Players above average age:
+ ['B', 'C', 'E']

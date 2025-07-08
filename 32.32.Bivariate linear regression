@@ -1,0 +1,21 @@
+import numpy as np
+from sklearn.linear_model import LinearRegression
+import matplotlib.pyplot as plt
+
+X = np.array([[1000], [1200], [1500], [1800], [2000]])
+y = np.array([200000, 240000, 300000, 360000, 400000])
+
+model = LinearRegression()
+model.fit(X, y)
+
+size = [[1600]]
+pred = model.predict(size)
+
+print("Predicted Price:", pred[0])
+
+plt.scatter(X, y, color='blue')
+plt.plot(X, model.predict(X), color='red')
+plt.title("Size vs Price")
+plt.xlabel("Size")
+plt.ylabel("Price")
+plt.show()

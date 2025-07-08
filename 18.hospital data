@@ -1,0 +1,63 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+import scipy.stats as stats
+
+# Step 1: Define the data
+age = [23, 23, 27, 27, 39, 41, 47, 49, 49, 50, 52, 54, 54, 56, 57, 58, 58, 60, 61]
+fat = [9.5, 26.5, 7.8, 17.8, 31.4, 25.9, 27.4, 27.2, 27.2, 31.2,
+       34.6, 42.5, 28.8, 33.4, 30.2, 34.1, 32.9, 41.2, 35.7]
+
+# Step 2: Create DataFrame
+df = pd.DataFrame({'Age': age, 'BodyFat': fat})
+
+# Step 3: Summary statistics
+print("=== Summary Statistics ===")
+print("Mean:\n", df.mean())
+print("Median:\n", df.median())
+print("Standard Deviation:\n", df.std())
+
+# Step 4: Boxplots
+plt.figure(figsize=(10, 4))
+plt.subplot(1, 2, 1)
+df.boxplot(column='Age')
+plt.title('Boxplot - Age')
+
+plt.subplot(1, 2, 2)
+df.boxplot(column='BodyFat')
+plt.title('Boxplot - Body Fat %')
+plt.tight_layout()
+plt.show()
+
+# Step 5: Scatter plot
+plt.scatter(df['Age'], df['BodyFat'], color='green')
+plt.xlabel('Age')
+plt.ylabel('Body Fat %')
+plt.title('Scatter Plot: Age vs Body Fat %')
+plt.grid(True)
+plt.show()
+
+# Step 6: Q-Q plots
+plt.figure(figsize=(10, 4))
+plt.subplot(1, 2, 1)
+stats.probplot(df['Age'], dist="norm", plot=plt)
+plt.title('Q-Q Plot - Age')
+
+plt.subplot(1, 2, 2)
+stats.probplot(df['BodyFat'], dist="norm", plot=plt)
+plt.title('Q-Q Plot - Body Fat %')
+plt.tight_layout()
+plt.show()
+
+output:
+Mean:
+ Age        46.578947
+BodyFat    28.700000
+dtype: float64
+Median:
+ Age        50.0
+BodyFat    30.2
+dtype: float64
+Standard Deviation:
+ Age        12.859565
+BodyFat     9.000988
+dtype: float64

@@ -1,0 +1,18 @@
+import numpy as np
+from sklearn.linear_model import LinearRegression
+
+X = np.array([[100, 20], [150, 15], [200, 12], [250, 10]])  # [horsepower, mileage]
+y = np.array([500000, 700000, 900000, 1100000])
+
+model = LinearRegression()
+model.fit(X, y)
+
+test = [[180, 13]]
+pred = model.predict(test)
+
+print("Predicted Car Price:", pred[0])
+print("R² Score:", model.score(X, y))
+
+output:
+Predicted Car Price: 820000.0
+R² Score: 1.0

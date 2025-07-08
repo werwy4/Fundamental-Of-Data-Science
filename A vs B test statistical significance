@@ -1,0 +1,13 @@
+import scipy.stats as stats
+
+# Example conversion rates
+design_A = [0.12, 0.14, 0.13, 0.15, 0.16]
+design_B = [0.10, 0.09, 0.11, 0.08, 0.10]
+
+t_stat, p_value = stats.ttest_ind(design_A, design_B)
+print("T-statistic:", t_stat)
+print("P-value:", p_value)
+
+output:
+T-statistic: 5.04714614515236
+P-value: 0.0009927667987489326

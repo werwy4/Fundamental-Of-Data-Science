@@ -1,0 +1,22 @@
+from sklearn.linear_model import LogisticRegression
+import numpy as np
+
+# Sample data: [usage_minutes, contract_months]
+X = np.array([[300, 12], [100, 1], [500, 24], [250, 6], [450, 18]])
+y = np.array([0, 1, 0, 1, 0])  # 1: Churned, 0: Not churned
+
+model = LogisticRegression()
+model.fit(X, y)
+
+# User input
+usage = float(input("Enter usage minutes: "))
+contract = int(input("Enter contract duration in months: "))
+features = np.array([[usage, contract]])
+
+prediction = model.predict(features)
+print("Churn Prediction:", "Yes" if prediction[0] == 1 else "No")
+
+output:
+Enter usage minutes: 120
+Enter contract duration in months: 3
+Churn Prediction: Yes

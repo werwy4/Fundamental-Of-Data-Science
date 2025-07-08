@@ -1,0 +1,55 @@
+import string
+from collections import Counter
+import matplotlib.pyplot as plt
+
+# Sample feedbacks from social media
+feedback = [
+    "Love the product! Fast delivery and great support.",
+    "Terrible experience, the product was broken.",
+    "Amazing service and quick response from team.",
+    "I would never recommend this to anyone.",
+    "Great value for money, will buy again!"
+]
+
+# Simple stopwords list
+stop_words = {
+    'the', 'is', 'and', 'was', 'for', 'to', 'this', 'a', 'i', 'from', 'will',
+    'on', 'it', 'of', 'in', 'that', 'with', 'again', 'never', 'anyone'
+}
+
+# Preprocess text
+text = ' '.join(feedback).lower()
+text = text.translate(str.maketrans('', '', string.punctuation))
+words = text.split()
+filtered_words = [w for w in words if w not in stop_words]
+
+# Frequency count
+freq = Counter(filtered_words)
+
+# Show top N words
+N = int(input("Enter top N frequent words: "))
+top_words = freq.most_common(N)
+print("\nTop Words:")
+for word, count in top_words:
+    print(f"{word}: {count}")
+
+# Plot bar chart
+w, c = zip(*top_words)
+plt.bar(w, c, color='coral')
+plt.title(f"Top {N} Frequent Words in Feedback")
+plt.xlabel("Words")
+plt.ylabel("Frequency")
+plt.xticks(rotation=45)
+plt.tight_layout()
+plt.show()
+
+output:
+Enter top N frequent words: 5
+
+Top Words:
+product: 2
+great: 2
+love: 1
+fast: 1
+delivery: 1
+

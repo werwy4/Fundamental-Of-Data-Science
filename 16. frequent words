@@ -1,0 +1,57 @@
+import string
+from collections import Counter
+import matplotlib.pyplot as plt
+
+# Sample reviews list
+reviews = [
+    "This product is amazing and very useful!",
+    "I didn't like the product, it's too expensive.",
+    "Good quality but the delivery was late.",
+    "Excellent product, fast shipping and great packaging.",
+    "Worst product ever. Totally disappointed!"
+]
+
+# Define basic stopwords list manually
+stop_words = {
+    'the', 'is', 'and', 'was', 'but', 'very', 'too', 'i', 'its', 'this', 'it',
+    'a', 'an', 'of', 'for', 'in', 'on', 'not', 'didn', 't', 's'
+}
+
+# Preprocess: lowercase, remove punctuation, split, remove stopwords
+text = ' '.join(reviews).lower()
+text = text.translate(str.maketrans('', '', string.punctuation))
+words = text.split()
+filtered_words = [w for w in words if w not in stop_words]
+
+# Word frequency
+freq = Counter(filtered_words)
+
+# Ask user for top N
+N = int(input("Enter top N frequent words: "))
+top_words = freq.most_common(N)
+
+# Print results
+print("\nTop Words:")
+for word, count in top_words:
+    print(f"{word}: {count}")
+
+# Plot bar chart
+words, counts = zip(*top_words)
+plt.bar(words, counts, color='skyblue')
+plt.title(f"Top {N} Frequent Words")
+plt.xlabel("Words")
+plt.ylabel("Count")
+plt.xticks(rotation=45)
+plt.tight_layout()
+plt.show()
+
+
+output:
+Enter top N frequent words: 5
+
+Top Words:
+product: 4
+amazing: 1
+useful: 1
+didnt: 1
+like: 1

@@ -1,0 +1,40 @@
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Simulated closing prices for 20 days
+closing_prices = np.array([100, 102, 105, 98, 110, 115, 117, 112, 118, 120,
+                           123, 125, 127, 122, 119, 121, 124, 126, 129, 130])
+
+# Step 1: Mean
+mean_price = closing_prices.mean()
+
+# Step 2: Standard deviation
+std_deviation = closing_prices.std()
+
+# Step 3: Price range
+min_price = closing_prices.min()
+max_price = closing_prices.max()
+price_range = max_price - min_price
+
+# Step 4: Print statistics
+print("Mean Price:", round(mean_price, 2))
+print("Standard Deviation:", round(std_deviation, 2))
+print("Minimum Price:", min_price)
+print("Maximum Price:", max_price)
+print("Price Range:", price_range)
+
+# Step 5: Line plot of price movement
+plt.figure(figsize=(10, 5))
+plt.plot(closing_prices, marker='o', linestyle='-', color='blue')
+plt.title("Stock Price Movement Over 20 Days")
+plt.xlabel("Day")
+plt.ylabel("Closing Price")
+plt.grid(True)
+plt.show()
+
+output:
+Mean Price: 117.15
+Standard Deviation: 9.47
+Minimum Price: 98
+Maximum Price: 130
+Price Range: 32

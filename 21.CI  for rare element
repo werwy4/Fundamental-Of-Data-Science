@@ -1,0 +1,26 @@
+import numpy as np
+import scipy.stats as stats
+
+# Sample data (concentration measurements)
+data = [2.5, 3.1, 2.8, 3.3, 2.9, 3.0, 2.7, 3.2, 3.1, 2.6,
+        2.8, 3.0, 3.4, 2.9, 3.2, 3.1, 2.7, 2.9, 3.3, 2.8]
+
+# User input
+sample_size = int(input("Enter sample size: "))
+confidence = float(input("Enter confidence level (e.g. 0.95): "))
+
+# Take a random sample
+sample = np.random.choice(data, size=sample_size, replace=False)
+mean = np.mean(sample)
+se = stats.sem(sample)
+margin = se * stats.t.ppf((1 + confidence) / 2, sample_size - 1)
+
+# Output confidence interval
+print(f"{int(confidence*100)}% Confidence Interval for mean:", (mean - margin, mean + margin))
+
+
+output:
+Enter sample size: 5
+Enter confidence level (e.g. 0.95): 0.95
+95% Confidence Interval for mean: (2.5463054103391256, 3.4136945896608744)
+

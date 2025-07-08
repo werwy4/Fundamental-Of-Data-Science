@@ -1,0 +1,12 @@
+import numpy as np
+from sklearn.cluster import KMeans
+
+X = np.array([[10, 1000], [2, 200], [15, 1500], [1, 100], [12, 1100]])  # [visits, spent]
+
+model = KMeans(n_clusters=2)
+model.fit(X)
+
+print("Customer Clusters:", model.labels_)
+
+  output:
+ustomer Clusters: [1 0 1 0 1]

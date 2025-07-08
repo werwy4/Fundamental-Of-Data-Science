@@ -1,0 +1,19 @@
+import numpy as np
+import scipy.stats as stats
+
+# Sample data (example values)
+drug = [12, 14, 11, 13, 15, 16, 13, 12, 14, 15]
+placebo = [5, 7, 6, 5, 6, 7, 5, 6, 4, 5]
+
+def ci(data, confidence=0.95):
+    mean = np.mean(data)
+    se = stats.sem(data)
+    margin = se * stats.t.ppf((1 + confidence) / 2, len(data)-1)
+    return (mean - margin, mean + margin)
+
+print("95% CI (Drug):", ci(drug))
+print("95% CI (Placebo):", ci(placebo))
+
+output:
+95% CI (Drug): (12.36892141857295, 14.63107858142705)
+95% CI (Placebo): (4.908899571155636, 6.291100428844364)

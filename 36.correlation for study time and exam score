@@ -1,0 +1,19 @@
+import numpy as np
+import matplotlib.pyplot as plt
+from scipy.stats import pearsonr
+
+study = np.array([1, 2, 3, 4, 5, 6])
+scores = np.array([40, 45, 50, 60, 65, 70])
+
+corr, _ = pearsonr(study, scores)
+
+plt.scatter(study, scores)
+plt.plot(study, np.poly1d(np.polyfit(study, scores, 1))(study), color='red')
+plt.title("Study Time vs Exam Score")
+plt.xlabel("Hours")
+plt.ylabel("Score")
+plt.show()
+
+print("Correlation Coefficient:", round(corr, 2))
+
+  

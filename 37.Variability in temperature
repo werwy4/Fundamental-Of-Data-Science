@@ -1,0 +1,24 @@
+import numpy as np
+
+cities = {
+    "CityA": [30, 32, 31, 35, 36],
+    "CityB": [22, 23, 21, 24, 22],
+    "CityC": [38, 40, 42, 45, 44]
+}
+
+for name, temps in cities.items():
+    arr = np.array(temps)
+    print(f"{name} -> Mean: {arr.mean()}, Std: {arr.std()}, Range: {arr.max() - arr.min()}")
+
+most_consistent = min(cities, key=lambda c: np.std(cities[c]))
+most_variable = max(cities, key=lambda c: max(cities[c]) - min(cities[c]))
+
+print("Most consistent:", most_consistent)
+print("Most variable:", most_variable)
+
+output:
+CityA -> Mean: 32.8, Std: 2.315167380558045, Range: 6
+CityB -> Mean: 22.4, Std: 1.019803902718557, Range: 3
+CityC -> Mean: 41.8, Std: 2.5612496949731396, Range: 7
+Most consistent: CityB
+Most variable: CityC

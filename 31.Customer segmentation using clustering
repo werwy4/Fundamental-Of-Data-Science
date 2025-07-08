@@ -1,0 +1,13 @@
+from sklearn.cluster import KMeans
+import numpy as np
+
+# Sample data: [purchase_freq, avg_amount_spent, age]
+X = np.array([[5, 500, 25], [2, 200, 45], [8, 900, 30], [1, 100, 50], [7, 850, 28]])
+
+model = KMeans(n_clusters=2, random_state=0)
+model.fit(X)
+
+print("Customer Segments:", model.labels_)
+
+output:
+Customer Segments: [0 1 0 1 0]

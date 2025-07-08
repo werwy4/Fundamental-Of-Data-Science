@@ -1,0 +1,20 @@
+import numpy as np
+import matplotlib.pyplot as plt
+
+prices = np.array([100, 102, 105, 98, 110, 115, 117, 112, 118])
+
+print("Mean:", prices.mean())
+print("Std Dev:", prices.std())
+print("Range:", prices.max() - prices.min())
+
+plt.plot(prices, marker='o')
+plt.title("Stock Price Movement")
+plt.xlabel("Day")
+plt.ylabel("Price")
+plt.show()
+
+output:
+Mean: 108.55555555555556
+Std Dev: 7.119786374933686
+Range: 20
+

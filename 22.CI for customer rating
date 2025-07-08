@@ -1,0 +1,13 @@
+import scipy.stats as stats
+
+# Example customer ratings (out of 5)
+ratings = [4.2, 3.8, 4.0, 4.5, 4.3, 3.9, 4.1, 4.4, 4.0, 4.2]
+
+mean = sum(ratings) / len(ratings)
+se = stats.sem(ratings)
+margin = se * stats.t.ppf(0.975, len(ratings) - 1)
+
+print("95% Confidence Interval for mean rating:", (mean - margin, mean + margin))
+
+output:
+95% Confidence Interval for mean rating: (3.9811113026508895, 4.29888869734911)

@@ -1,0 +1,20 @@
+from sklearn.neighbors import KNeighborsClassifier
+
+# Dataset: [fever, cough, fatigue], label: 0/1
+X = [[1, 1, 0], [0, 1, 1], [1, 0, 1], [0, 0, 0], [1, 1, 1]]
+y = [1, 0, 1, 0, 1]
+
+model = KNeighborsClassifier(n_neighbors=int(input("Enter k: ")))
+model.fit(X, y)
+
+# Input new patient
+new = [int(input("Fever (1/0): ")), int(input("Cough (1/0): ")), int(input("Fatigue (1/0): "))]
+result = model.predict([new])
+print("Prediction (1=Condition, 0=No Condition):", result[0])
+
+output:
+Enter k: 3
+Fever (1/0): 1
+Cough (1/0): 1
+Fatigue (1/0): 0
+Prediction (1=Condition, 0=No Condition): 1
